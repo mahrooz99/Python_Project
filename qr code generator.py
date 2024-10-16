@@ -1,16 +1,22 @@
 import qrcode
-def generate_qrcode(text):
-    qr = qrcode.QRCode(
-        version = 1,
-        error_correction = qrcode.constants. ERROR_CORRECT_L,
-        box_size=10,
-        border=4,
-    )
+#Whatsapp Qr code generator
+# Your WhatsApp link (replace with your actual number)
+whatsapp_link = "https://wa.me/03361157646"  # Replace with your phone number (with country code)
 
-    qr.add_data(text)
-    qr.make(fit=True)
-    img = qr.make_image(fill_color="black", back_color="white")
-    img.save("qrimg001.png")
-    
-url = input("Enter your url: ")
-generate_qrcode(url)
+# Generate QR code
+qr = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=4,
+)
+qr.add_data(whatsapp_link)
+qr.make(fit=True)
+
+# Create an image from the QR code
+img = qr.make_image(fill='black', back_color='white')
+
+# Save the QR code as an image
+img.save("whatsapp_qr_code.png")
+
+print("QR code generated and saved as whatsapp_qr_code.png")
